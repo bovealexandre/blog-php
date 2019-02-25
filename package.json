@@ -1,0 +1,18 @@
+{
+  "name": "boilerplate-final",
+  "version": "1.0.0",
+  "description": "Boilerplate to use on slim twig project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre Bove, Samuel Degueldre, Anne Magali",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "dependencies": {
+    "why-is-node-running": "^2.0.3"
+  }
+}

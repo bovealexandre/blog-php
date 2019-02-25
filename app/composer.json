@@ -1,0 +1,23 @@
+{
+    "name": "boilerplate",
+    "description": "Simple Slim Framework 3 skeleton with Twig, Eloquent, CSRF & Monolog.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alexandre Bove",
+            "email": "alexandre.l.bove@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/twig-view": "^2.0",
+        "slim/flash": "^0.1.0",
+        "monolog/monolog": "^1.13",
+        "illuminate/database": "^5.7"
+    }
+}
