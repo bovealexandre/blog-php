@@ -14,8 +14,11 @@ session_start();
 $settings = require __DIR__ . '/../app/settings.php';
 $app = new \Slim\App($settings);
 
+
+
 // Set up dependencies
 require __DIR__ . '/../app/dependencies.php';
+
 
 // Register middleware
 require __DIR__ . '/../app/middleware.php';

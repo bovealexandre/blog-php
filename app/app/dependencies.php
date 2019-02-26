@@ -9,12 +9,13 @@ $container = $app->getContainer();
 
 // Database connection
 
-$container['db']= function($c){
-    $settings = $c->get('settings');
-    $capsule= new Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($settings['db']);
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
+$container['db']= function($c) {
+    $settings = $c->get('settings')['db'];
+    $pdo = new PDO("pgsql:host=" . $settings['host'] . ";dbname=" . $settings['database'],
+        $settings['username'], $settings['password']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $pdo;
 };
 
 // Twig
@@ -52,5 +53,9 @@ $container['logger'] = function ($c) {
 // -----------------------------------------------------------------------------
 
 $container[App\Action\HomeAction::class] = function ($c) {
-    return new App\Action\HomeAction($c->get('view'), $c->get('logger'));
+    return new App\Action\HomeAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\ArticleAction::class] = function ($c) {
+    return new App\Action\ArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };

@@ -2,4 +2,7 @@
 // Routes
 
 $app->get('/', App\Action\HomeAction::class)
-    ->setName('homepage');
+    ->setName('home');
+
+$app->get('/article', App\Action\ArticleAction::class)
+    ->setName('article');
