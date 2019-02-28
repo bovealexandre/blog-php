@@ -7,6 +7,18 @@ $container = $app->getContainer();
 // Service providers
 // -----------------------------------------------------------------------------
 
+
+// CSRF Protection
+
+$container['csrf'] = function ($c) {
+    return new \Slim\Csrf\Guard;
+};
+
+$container['session'] = function ($c) {
+    return new \SlimSession\Helper;
+};
+
+
 // Database connection
 
 $container['db']= function($c) {
@@ -25,7 +37,11 @@ $container['view'] = function ($c) {
 
     // Add extensions
     $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
+    $view->addExtension(new App\Action\CsrfAction($c->get('csrf')));
     $view->addExtension(new Twig_Extension_Debug());
+
+
+    $view->offsetSet('session', $_SESSION);
 
     return $view;
 };
@@ -58,4 +74,24 @@ $container[App\Action\HomeAction::class] = function ($c) {
 
 $container[App\Action\ArticleAction::class] = function ($c) {
     return new App\Action\ArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\ConnexionAction::class] = function ($c) {
+    return new App\Action\ConnexionAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\ConnectAction::class] = function ($c) {
+    return new App\Action\ConnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DisconnectAction::class] = function ($c) {
+    return new App\Action\DisconnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\RegisterPageAction::class] = function ($c) {
+    return new App\Action\RegisterPageAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\RegisterAction::class] = function ($c) {
+    return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };

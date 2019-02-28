@@ -22,11 +22,20 @@
                       </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ path_for('article') }}">Team</a>
+                  <a class="nav-link" href="{{ path_for('article') }}">article</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./contact.njk">Contact</a>
-                </li>
+                {% if session.login == true %}
+                  <li class="nav-item">
+                    Bienvenue {{ session.name }} !
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path_for('disconnect') }}">Déconnexion</a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path_for('connexion') }}">Connexion</a>
+                  </li>
+                {% endif %}
               </ul>
             </div>
           </div>
