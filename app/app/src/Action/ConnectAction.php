@@ -24,7 +24,7 @@ final class ConnectAction
     {
         $data = $request->getParsedBody();
         $pseudo=filter_var($data['pseudo'], FILTER_SANITIZE_STRING);
-        $password=filter_var($data['password'], FILTER_SANITIZE_STRING);
+        $password= password_hash($data['password'], PASSWORD_BCRYPT,['cost' => 12]);
         $this->logger->info("Connect action dispatched");
         $user = $this->db->prepare('SELECT * FROM users WHERE pseudo =:pseudo OR email=:pseudo');
         $user->bindValue('pseudo', $pseudo, \PDO::PARAM_STR);
@@ -32,7 +32,7 @@ final class ConnectAction
         $user= $user->fetch(\PDO::FETCH_ASSOC);
         if ($pseudo === $user['pseudo'] || $pseudo === $user['email']){
           $_SESSION['login'] = true;
-          $_SESSION['name']=$user['nom'];
+          $_SESSION['name']=$user['prenom'];
           $_SESSION["pseudo"]=$user["pseudo"];
           $_SESSION["permission"]= $user["permission"];
 

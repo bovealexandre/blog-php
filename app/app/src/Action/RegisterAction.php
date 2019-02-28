@@ -24,17 +24,20 @@ final class RegisterAction
   {
     $data = $request->getParsedBody();
     $nom =$data['Name'];
-    $prenom =
-    $email=
-    $sentpassword=
-    $password=password_hash($sentpassword, PASSWORD_BCRYPT,['cost' => 12]);
+    $prenom =$data['Firstname']; // récupérations de données, envoies dans les bindvalues
+    $email=$data['user_email'];
+    $pseudo=$data['pseudo'];
+    $sentpassword=$data['password'];
+    $password=password_hash($sentpassword, PASSWORD_BCRYPT,['cost' => 12]); // cryptage du mot de passe 
 
-    $user = $this->db->prepare('INSERT INTO users(nom,prenom,pseudo,email,password,inscriptiondate,permission) VALUES (:nom,:prenom,:pseudo,:email,:password,NOW(),1');
+    $user = $this->db->prepare('INSERT INTO users(nom,prenom,pseudo,email,password,inscriptiondate,permission) VALUES (:nom,:prenom,:pseudo,:email,:password,NOW(),1)');
     $user->bindValue('nom', $nom, \PDO::PARAM_STR); 
-    $user->bindValue('prenom', $prenom, \PDO::PARAM_STR); 
+    $user->bindValue('prenom', $prenom, \PDO::PARAM_STR); // renvoie dans les values les données que j'envoie 
     $user->bindValue('pseudo', $pseudo, \PDO::PARAM_STR);
     $user->bindValue('email', $email, \PDO::PARAM_STR);
     $user->bindValue('password', $password, \PDO::PARAM_STR);
     $user->execute();
+
+    return $response->withRedirect('/', 301); // 301 = façon dont il redirige exemple = error 404
   }
 }

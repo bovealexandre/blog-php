@@ -95,3 +95,11 @@ $container[App\Action\RegisterPageAction::class] = function ($c) {
 $container[App\Action\RegisterAction::class] = function ($c) {
     return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
+
+$container[App\Action\CreateArticleAction::class] = function ($c) {
+    return new App\Action\CreateArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\CreateArticlePageAction::class] = function ($c) {
+    return new App\Action\CreateArticlePageAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};

@@ -10,7 +10,7 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4 m-auto">
             <div class="account-wall">
 
-                <form class="form-signin" action="" method="post">
+                <form class="form-signin" action="{{ path_for('registerAction')}}" method="post">
                     <input type="text" class="form-control" placeholder="Name" name="Name" required autofocus>
                     <input type="text" class="form-control" placeholder="Firstname" name="Firstname" required autofocus>
                     <input type="email" class="form-control" placeholder="Email" name="user_email" required autofocus>
