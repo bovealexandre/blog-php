@@ -3,6 +3,7 @@
         <meta charset="utf-8"/>
         {% block title %}
         {% endblock %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link href='{{ base_url() }}/css/master.css' rel='stylesheet' type='text/css'>
         <link href='{{ base_url() }}/css/bootstrap.css' rel='stylesheet' type='text/css'>
     </head>
@@ -26,8 +27,13 @@
                 </li>
                 {% if session.login == true %}
                   <li class="nav-item">
-                    Bienvenue {{ session.name }} !
+                    <span  class="nav-link">Bienvenue {{ session.name }} !</span>
                   </li>
+                  {% if session.permission == 3 or session.permission == 2 %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ path_for('dashboard') }}">Panneau d'administration</a>
+                    </li>
+                  {% endif %}
                   <li class="nav-item">
                     <a class="nav-link" href="{{ path_for('disconnect') }}">Déconnexion</a>
                   </li>
@@ -45,8 +51,8 @@
       {% block content %}
       {% endblock %}
 
-      <script type="text/javascript" src="js/jquery.min.js"></script>
-      <script type="text/javascript" src="js/popper.min.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{{ base_url() }}/js/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ base_url() }}/js/popper.min.js"></script>
+      <script type="text/javascript" src="{{ base_url() }}/js/bootstrap.min.js"></script>
     </body>
 </html>

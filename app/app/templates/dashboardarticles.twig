@@ -1,0 +1,51 @@
+{% extends "layout/dashboardlayout.twig" %}
+
+{% block title %}
+        <title>Slim 3</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1 class="mt-4 mb-4">Articles</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Writer</th>
+              <th scope="col">Categories</th>
+              <th scope="col">Publish date</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" colspan="8" class="text-center"><i class="fas fa-plus-square"></i> Ajouter un article</th>
+            </tr>
+            {% for articles in articles %}
+              {% set articleNum = articleNum + 1 %}
+              <tr> 
+                <th scope="row">{{articleNum}}</th>
+                <td>{{articles.title}}</td>
+                <td>{{articles.prenom}}</td>
+                <td>{{articles.pseudo}}</td>
+                <td>{{articles.categories}}</td>
+                <td>{{articles.inscriptiondate}}</td>
+                <td><i class="fas fa-edit"></i></td>
+                <td><i class="fas fa-trash"></i></td>
+              </tr>
+            {% else %}
+              <tr>
+                <th colspan="8" class="text-center">There are no articles at the moment</th>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+{% endblock %}

@@ -103,3 +103,31 @@ $container[App\Action\CreateArticleAction::class] = function ($c) {
 $container[App\Action\CreateArticlePageAction::class] = function ($c) {
     return new App\Action\CreateArticlePageAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
+
+$container[App\Action\DashboardHomeAction::class] = function ($c) {
+    return new App\Action\DashboardHomeAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUserAction::class] = function ($c) {
+    return new App\Action\DashboardUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardArticlesAction::class] = function ($c) {
+    return new App\Action\DashboardArticlesAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardCategoriesAction::class] = function ($c) {
+    return new App\Action\DashboardCategoriesAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardEditUserAction::class] = function ($c) {
+    return new App\Action\DashboardEditUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUpdateUserAction::class] = function ($c) {
+    return new App\Action\DashboardUpdateUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardDeleteUserAction::class] = function ($c) {
+    return new App\Action\DashboardDeleteUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};

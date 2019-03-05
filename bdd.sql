@@ -4,7 +4,7 @@ CREATE TABLE users (
         nom VARCHAR NOT NULL,
         prenom VARCHAR NOT NULL,
         pseudo VARCHAR NOT NULL UNIQUE,
-        email VARCHAR NOT NULL CHECK (email SIMILAR TO '[a-zA-Z0-9_\-]+@([a-zA-Z0-9_\-]+\.[a-z]{2,4})') UNIQUE,
+        email VARCHAR NOT NULL CHECK (([a-zA-Z0-9_\-]+\.)?)+[a-zA-Z0-9_\-]+@([a-zA-Z0-9_\-]+\.[a-z]{2,4}) UNIQUE,
         password VARCHAR NOT NULL,
         inscriptionDate TIMESTAMP NOT NULL,
         permission INT NOT NULL
@@ -21,7 +21,7 @@ CREATE TABLE articles(
     text TEXT NOT NULL,
     title VARCHAR NOT NULL,
     publish_date TIMESTAMP NOT NULL,
-    image VARCHAR NOT NULL
+    image BYTEA NOT NULL
 );
 
 CREATE TABLE comments(

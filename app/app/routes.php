@@ -28,5 +28,23 @@ $app->post('/createarticleAction', App\Action\CreateArticleAction::class)
 $app->get('/createarticle', App\Action\CreateArticlePageAction::class)
     ->setName('createarticle');
 
+$app->get('/dashboard', App\Action\DashboardHomeAction::class)
+    ->setName('dashboard');
 
+$app->get('/dashboard/users', App\Action\DashboardUserAction::class)
+    ->setName('dashboarduser');
 
+$app->get('/dashboard/articles', App\Action\DashboardArticlesAction::class)
+    ->setName('dashboardarticles');
+
+$app->get('/dashboard/categories', App\Action\DashboardCategoriesAction::class)
+    ->setName('dashboardcategories');
+
+$app->get('/dashboard/edit/user/{id}', App\Action\DashboardEditUserAction::class)
+    ->setName('dashboardedituser');
+
+$app->post('/dashboard/update/user/{id}', App\Action\DashboardUpdateUserAction::class)
+    ->setName('dashboardupdateuser');
+
+$app->get('/dashboard/delete/user/{id}', App\Action\DashboardDeleteUserAction::class)
+    ->setName('dashboarddeleteuser');

@@ -27,18 +27,17 @@ final class CreateArticleAction
     $image =$data['image'];
     $text =$data['text'];
 
-    $id=$this->db->prepare('SELECT ID FROM users WHERE pseudo = :pseudo');
+    $id=$this->db->prepare('SELECT id FROM users WHERE pseudo = :pseudo');
     $id->bindValue('pseudo',$_SESSION['pseudo'],\PDO::PARAM_STR);
     $id->execute();
-    $id->fetch();
+    $result= $id->fetch(\PDO::FETCH_ASSOC);
 
-	var_dump($id);
 
     $articles = $this->db->prepare('INSERT INTO articles(text,title,image,writer_id,publish_date) VALUES (:text,:title,:image,:writer_id,NOW())');
     $articles->bindValue('title', $title, \PDO::PARAM_STR); 
     $articles->bindValue('image', $image, \PDO::PARAM_STR); // renvoie dans les values les données que j'envoie 
     $articles->bindValue('text', $text, \PDO::PARAM_STR);
-    $articles->bindValue('writer_id', $writer_id, \PDO::PARAM_INT);
+    $articles->bindValue('writer_id', $result['id'], \PDO::PARAM_INT);
     $articles->execute();
 
     return $response->withRedirect('/', 301);

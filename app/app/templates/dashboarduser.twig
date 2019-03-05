@@ -1,0 +1,54 @@
+{% extends "layout/dashboardlayout.twig" %}
+
+{% block title %}
+        <title>Slim 3</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1 class="mt-4 mb-4">Users</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First name</th>
+              <th scope="col">Name</th>
+              <th scope="col">Pseudo</th>
+              <th scope="col">Email</th>
+              <th scope="col">Inscription date</th>
+              <th scope="col">Permission</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for users in users %}
+            {% set userNum = userNum + 1 %} 
+            <tr>
+              <th scope="row">{{userNum}}</th>
+              <td>{{users.nom}}</td>
+              <td>{{users.prenom}}</td>
+              <td>{{users.pseudo}}</td>
+              <td>{{users.email}}</td>
+              <td>{{users.inscriptiondate}}</td>
+              <td>
+              {% if users.permission == 1 %}
+                User
+              {% elseif users.permission == 2 %}
+                Writer
+              {% elseif users.permission == 3 %}
+                Admin
+              {% endif %}
+              </td>
+              <td><a href="{{ path_for('dashboardedituser', {'id':users.id})}}"><i class="fas fa-user-edit"></i></a></td>
+              <td><a href="{{ path_for('dashboarddeleteuser', {'id':users.id})}}"><i class="fas fa-user-times"></i></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+{% endblock %}

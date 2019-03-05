@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        {% block title %}
+        {% endblock %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href='{{ base_url() }}/css/admin.css' rel='stylesheet' type='text/css'>
+        <link href='{{ base_url() }}/css/bootstrap.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+    </body>
+      <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Innovation.io </div>
+      <div class="list-group list-group-flush">
+        <a href="{{path_for('dashboard')}}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home"></i> Home</a>
+        <a href="{{path_for('dashboarduser')}}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-address-card"></i> Users</a>
+        <a href="{{path_for('dashboardarticles')}}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-pager"></i> Articles</a>
+        <a href="{{path_for('dashboardcategories')}}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-folder-open"></i> Categories</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ path_for('dashboard') }}"> <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path_for('home')}}"><i class="fas fa-globe"></i> Website</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="{{ path_for('disconnect') }}">
+                <i class="fas fa-power-off"></i> Disconnexion
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+
+      {% block content %}
+      {% endblock %}
+
+                </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+      </div>
+      <!-- /#wrapper -->
+
+      <script type="text/javascript" src="{{ base_url() }}/js/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ base_url() }}/js/popper.min.js"></script>
+      <script type="text/javascript" src="{{ base_url() }}/js/bootstrap.min.js"></script>
+
+        <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</html>
