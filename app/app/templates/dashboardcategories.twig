@@ -20,15 +20,15 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row" colspan="8" class="text-center"><i class="fas fa-plus-square"></i> Ajouter une catégorie</th>
+              <th scope="row" colspan="8" class="text-center"><a href="{{path_for('dashboardcreatecategory')}}"><i class="fas fa-plus-square"></i> Ajouter une catégorie</a></th>
             </tr>
             {% for categories in categories %}
               {% set catNum = catNum + 1 %}
               <tr> 
                 <th scope="row">{{catNum}}</th>
                 <td class="w-100">{{categories.nom}}</td>
-                <td><i class="fas fa-edit"></i></td>
-                <td><i class="fas fa-trash"></i></td>
+                <td><a href="{{ path_for('dashboardeditcategory', {'id':categories.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path_for('dashboarddeletecategory', {'id':categories.id}) }}"><i class="fas fa-trash"></i></a></td>
               </tr>
             {% else %}
               <tr>

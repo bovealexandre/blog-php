@@ -112,14 +112,6 @@ $container[App\Action\DashboardUserAction::class] = function ($c) {
     return new App\Action\DashboardUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
 
-$container[App\Action\DashboardArticlesAction::class] = function ($c) {
-    return new App\Action\DashboardArticlesAction($c->get('view'), $c->get('logger'),$c->get('db'));
-};
-
-$container[App\Action\DashboardCategoriesAction::class] = function ($c) {
-    return new App\Action\DashboardCategoriesAction($c->get('view'), $c->get('logger'),$c->get('db'));
-};
-
 $container[App\Action\DashboardEditUserAction::class] = function ($c) {
     return new App\Action\DashboardEditUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
@@ -130,4 +122,36 @@ $container[App\Action\DashboardUpdateUserAction::class] = function ($c) {
 
 $container[App\Action\DashboardDeleteUserAction::class] = function ($c) {
     return new App\Action\DashboardDeleteUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardArticlesAction::class] = function ($c) {
+    return new App\Action\DashboardArticlesAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardCreateArticleAction::class] = function ($c) {
+    return new App\Action\DashboardCreateArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardCategoriesAction::class] = function ($c) {
+    return new App\Action\DashboardCategoriesAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardCreateCategoryAction::class] = function ($c) {
+    return new App\Action\DashboardCreateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\CreateCategoryAction::class] = function ($c) {
+    return new App\Action\CreateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardEditCategoryAction::class] = function ($c) {
+    return new App\Action\DashboardEditCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUpdateCategoryAction::class] = function ($c) {
+    return new App\Action\DashboardUpdateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardDeleteCategoryAction::class] = function ($c) {
+    return new App\Action\DashboardDeleteCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };

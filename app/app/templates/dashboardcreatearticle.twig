@@ -1,0 +1,33 @@
+{% extends "layout/dashboardlayout.twig" %}
+
+{% block title %}
+        <title>Slim 3</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4 mb-4">Create a new article</h1>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 m-auto">
+            <div class="account-wall">
+              <form class="form-signin" action="{{ path_for('dashboardupdateuser', {'id':id}) }}" method="post">
+                    <input type="text" class="form-control" value="{{pseudo}}" name="pseudo" required autofocus>
+                    <input type="text" class="form-control" value="{{nom}}" name="firstname" required>
+                    <input type="text" class="form-control" value="{{prenom}}" name="name" required>
+                    <input type="email" class="form-control" value="{{email}}" name="email" required>
+                    <select name="permission"  class="form-control">
+                        <option value="1" {% if permission == 1 %}selected="selected"{% endif %}>User</option>
+                        <option value="2" {% if permission == 2 %}selected="selected"{% endif %}>Writer</option>
+                        <option value="3" {% if permission == 3 %}selected="selected"{% endif %}>Admin</option>
+                    </select>
+                    {{ csrf_fields() | raw }}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
