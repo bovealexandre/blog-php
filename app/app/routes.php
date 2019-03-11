@@ -66,3 +66,6 @@ $app->post('/dashboard/update/category/{id}', App\Action\DashboardUpdateCategory
 
 $app->get('/dashboard/delete/category/{id}', App\Action\DashboardDeleteCategoryAction::class)
     ->setName('dashboarddeletecategory')->add(new App\Middlewares\SessionMiddleware($container));
+
+    $app->post('/dashboard/create/new/article', App\Action\DashboardCreationArticleAction::class)
+    ->setName('dashboardcreatenewarticle')->add(new App\Middlewares\SessionMiddleware($container));

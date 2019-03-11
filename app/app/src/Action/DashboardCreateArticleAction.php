@@ -23,6 +23,10 @@ final class DashboardCreateArticleAction
     public function __invoke(Request $request, Response $response, $args)
     {     
       $this->logger->info("Dashboard categories page action dispatched");
+      
+      $categories = $this->db->prepare('SELECT * FROM categories');
+      $categories->execute();
+      $args['categories']=$categories; // clés qui vont rechercher infos BDD 
         
       $this->view->render($response, 'dashboardcreatearticle.twig',$args);
     }
