@@ -10,23 +10,22 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 jasgrid">
-            {% for row in articles %}
+            {% for articles in articles %}
             <div class="box-item">
                 <div class="box-post">
                     <span class="label label-success">
-                        <a href="#" rel="tag">{{row.writer}}</a>
+                        <a href="#" rel="tag">{{articles.pseudo}}</a>
                     </span>
                     <h1 class="post-title">
                         <a href="#">
-                            {{row.text}}
+                            {{articles.title}}
                         </a>
                     </h1>
                     <span class="meta">
-                        <span><i class="glyphicon glyphicon-comment"></i> <a href="http://wordpress.thebebel.com/showcase/newsbook/2015/01/19/meet-asias-best-destinations-for-the-summer/#respond">No Comments</a></span>
-                        <span><i class="glyphicon glyphicon-time"></i> Sep 15, 2015</span>
+                        <span><i class="fas fa-clock"></i> {{articles.publish_date}}</span>
                     </span>
                 </div>
-                <img src="{{row.image}}" alt="City in the sky: world's biggest hotel to open in Mecca" 
+                <img src="{{articles.image}}" alt="City in the sky: world's biggest hotel to open in Mecca" 
                 class="">        
             </div>
 

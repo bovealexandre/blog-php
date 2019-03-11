@@ -64,6 +64,12 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+
+// upload images
+
+$container['upload_directory'] = __DIR__ . '/uploads';
+
+
 // -----------------------------------------------------------------------------
 // Action factories
 // -----------------------------------------------------------------------------

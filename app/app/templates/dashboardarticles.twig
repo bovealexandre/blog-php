@@ -24,17 +24,17 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row" colspan="8" class="text-center"><i class="fas fa-plus-square"></i> Ajouter un article</th>
+              <th scope="row" colspan="8" class="text-center"><a href="{{path_for('dashboardcreatearticle')}}"><i class="fas fa-plus-square"></i> Ajouter un article</th>
             </tr>
             {% for articles in articles %}
               {% set articleNum = articleNum + 1 %}
               <tr> 
                 <th scope="row">{{articleNum}}</th>
                 <td>{{articles.title}}</td>
-                <td>{{articles.prenom}}</td>
+                <td>{{articles.text}}</td>
                 <td>{{articles.pseudo}}</td>
                 <td>{{articles.categories}}</td>
-                <td>{{articles.inscriptiondate}}</td>
+                <td>{{articles.publish_date}}</td>
                 <td><i class="fas fa-edit"></i></td>
                 <td><i class="fas fa-trash"></i></td>
               </tr>

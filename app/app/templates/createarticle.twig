@@ -11,10 +11,10 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4 m-auto">
             <div class="account-wall">
 
-                <form class="create-article" action="{{ path_for('CreateArticleAction')}}" method="post">
+                <form class="create-article" action="{{ path_for('CreateArticleAction')}}" method="post"  enctype="multipart/form-data">
                    
                     <input type="text" class="create-article" placeholder="title" name="title" required autofocus>
-                    <input type="file" class="create-article" placeholder="image" name="image" required autofocus>
+                    <input type="file" class="create-article" name="image" required autofocus>
                     <textarea class="create-article" placeholder="text" name="text" required autofocus></textarea>
                     
                    

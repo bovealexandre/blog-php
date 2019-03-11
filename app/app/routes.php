@@ -29,40 +29,40 @@ $app->get('/createarticle', App\Action\CreateArticlePageAction::class)
     ->setName('createarticle');
 
 $app->get('/dashboard', App\Action\DashboardHomeAction::class)
-    ->setName('dashboard');
+    ->setName('dashboard')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/users', App\Action\DashboardUserAction::class)
-    ->setName('dashboarduser');
+    ->setName('dashboarduser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/edit/user/{id}', App\Action\DashboardEditUserAction::class)
-    ->setName('dashboardedituser');
+    ->setName('dashboardedituser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->post('/dashboard/update/user/{id}', App\Action\DashboardUpdateUserAction::class)
-    ->setName('dashboardupdateuser');
+    ->setName('dashboardupdateuser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/delete/user/{id}', App\Action\DashboardDeleteUserAction::class)
-    ->setName('dashboarddeleteuser');
+    ->setName('dashboarddeleteuser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/articles', App\Action\DashboardArticlesAction::class)
-    ->setName('dashboardarticles');
+    ->setName('dashboardarticles')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/create/article', App\Action\DashboardCreateArticleAction::class)
-    ->setName('dashboardcreatearticle');
+    ->setName('dashboardcreatearticle')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/categories', App\Action\DashboardCategoriesAction::class)
-    ->setName('dashboardcategories');
+    ->setName('dashboardcategories')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/create/category', App\Action\DashboardCreateCategoryAction::class)
-    ->setName('dashboardcreatecategory');
+    ->setName('dashboardcreatecategory')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->post('/dashboard/create/new/category', App\Action\CreateCategoryAction::class)
-    ->setName('dashboardcreatenewcategory');
+    ->setName('dashboardcreatenewcategory')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/edit/category/{id}', App\Action\DashboardEditCategoryAction::class)
-    ->setName('dashboardeditcategory');
+    ->setName('dashboardeditcategory')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->post('/dashboard/update/category/{id}', App\Action\DashboardUpdateCategoryAction::class)
-    ->setName('dashboardupdatecategory');
+    ->setName('dashboardupdatecategory')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/delete/category/{id}', App\Action\DashboardDeleteCategoryAction::class)
-    ->setName('dashboarddeletecategory');
+    ->setName('dashboarddeletecategory')->add(new App\Middlewares\SessionMiddleware($container));

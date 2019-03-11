@@ -6,6 +6,7 @@ use Slim\Views\Twig;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\UploadedFile;
 
 final class CreateArticleAction
 {
@@ -23,9 +24,13 @@ final class CreateArticleAction
   public function __invoke(Request $request, Response $response, $args)
   {
     $data = $request->getParsedBody();
+    $files = $request->getUploadedFiles();
+
     $title =$data['title'];
-    $image =$data['image'];
+    $image =$files['image'];
     $text =$data['text'];
+
+    $image->getStream()->getMetadata('uri');
 
     $id=$this->db->prepare('SELECT id FROM users WHERE pseudo = :pseudo');
     $id->bindValue('pseudo',$_SESSION['pseudo'],\PDO::PARAM_STR);
