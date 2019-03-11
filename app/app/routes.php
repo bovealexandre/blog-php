@@ -35,13 +35,13 @@ $app->get('/dashboard/users', App\Action\DashboardUserAction::class)
     ->setName('dashboarduser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/edit/user/{id}', App\Action\DashboardEditUserAction::class)
-    ->setName('dashboardedituser')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboardedituser')->add(new App\Middlewares\AuthMiddleware($container));
 
 $app->post('/dashboard/update/user/{id}', App\Action\DashboardUpdateUserAction::class)
-    ->setName('dashboardupdateuser')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboardupdateuser')->add(new App\Middlewares\AuthMiddleware($container));
 
 $app->get('/dashboard/delete/user/{id}', App\Action\DashboardDeleteUserAction::class)
-    ->setName('dashboarddeleteuser')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboarddeleteuser')->add(new App\Middlewares\AuthMiddleware($container));
 
 $app->get('/dashboard/articles', App\Action\DashboardArticlesAction::class)
     ->setName('dashboardarticles')->add(new App\Middlewares\SessionMiddleware($container));
@@ -59,10 +59,10 @@ $app->post('/dashboard/create/new/category', App\Action\CreateCategoryAction::cl
     ->setName('dashboardcreatenewcategory')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/edit/category/{id}', App\Action\DashboardEditCategoryAction::class)
-    ->setName('dashboardeditcategory')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboardeditcategory')->add(new App\Middlewares\AuthMiddleware($container));
 
 $app->post('/dashboard/update/category/{id}', App\Action\DashboardUpdateCategoryAction::class)
-    ->setName('dashboardupdatecategory')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboardupdatecategory')->add(new App\Middlewares\AuthMiddleware($container));
 
 $app->get('/dashboard/delete/category/{id}', App\Action\DashboardDeleteCategoryAction::class)
-    ->setName('dashboarddeletecategory')->add(new App\Middlewares\SessionMiddleware($container));
+    ->setName('dashboarddeletecategory')->add(new App\Middlewares\AuthMiddleware($container));

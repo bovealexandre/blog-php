@@ -32,6 +32,7 @@ final class ConnectAction
         $user= $user->fetch(\PDO::FETCH_ASSOC);
         if ($pseudo === $user['pseudo'] || $pseudo === $user['email']){
           $_SESSION['login'] = true;
+          $_SESSION['id']=$user['id'];
           $_SESSION['name']=$user['prenom'];
           $_SESSION["pseudo"]=$user["pseudo"];
           $_SESSION["permission"]= $user["permission"];
