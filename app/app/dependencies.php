@@ -161,3 +161,7 @@ $container[App\Action\DashboardUpdateCategoryAction::class] = function ($c) {
 $container[App\Action\DashboardDeleteCategoryAction::class] = function ($c) {
     return new App\Action\DashboardDeleteCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
+
+$container[App\Action\DashboardCreationArticleAction::class] = function ($c) {
+    return new App\Action\DashboardCreationArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};

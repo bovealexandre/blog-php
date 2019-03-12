@@ -1,6 +1,8 @@
 <?php
 // Routes
 
+
+
 $app->get('/', App\Action\HomeAction::class)
     ->setName('home');
 
@@ -66,3 +68,6 @@ $app->post('/dashboard/update/category/{id}', App\Action\DashboardUpdateCategory
 
 $app->get('/dashboard/delete/category/{id}', App\Action\DashboardDeleteCategoryAction::class)
     ->setName('dashboarddeletecategory')->add(new App\Middlewares\AuthMiddleware($container));
+
+$app->post('/dashboard/create/new/article', App\Action\DashboardCreationArticleAction::class)
+    ->setName('dashboardcreatenewarticle')->add(new App\Middlewares\SessionMiddleware($container));
