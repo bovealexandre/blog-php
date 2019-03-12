@@ -24,7 +24,7 @@ final class DashboardArticlesAction
     {
       $this->logger->info("Dashboard user page action dispatched");
 
-      $articles = $this->db->prepare('SELECT * FROM articles INNER JOIN users ON articles.writer_id = users.ID');
+      $articles = $this->db->prepare('SELECT articles.*, users.pseudo FROM articles LEFT JOIN users ON articles.writer_id = users.ID');
       $articles->execute();
       $args['articles']=$articles;
         

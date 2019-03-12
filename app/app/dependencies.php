@@ -165,3 +165,15 @@ $container[App\Action\DashboardDeleteCategoryAction::class] = function ($c) {
 $container[App\Action\DashboardCreationArticleAction::class] = function ($c) {
     return new App\Action\DashboardCreationArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
+
+$container[App\Action\DashboardEditArticleAction::class] = function ($c) {
+    return new App\Action\DashboardEditArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUpdateArticleAction::class] = function ($c) {
+    return new App\Action\DashboardUpdateArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardDeleteArticleAction::class] = function ($c) {
+    return new App\Action\DashboardDeleteArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
