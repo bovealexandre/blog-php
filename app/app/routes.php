@@ -71,3 +71,12 @@ $app->get('/dashboard/delete/category/{id}', App\Action\DashboardDeleteCategoryA
 
 $app->post('/dashboard/create/new/article', App\Action\DashboardCreationArticleAction::class)
     ->setName('dashboardcreatenewarticle')->add(new App\Middlewares\SessionMiddleware($container));
+
+$app->get('/dashboard/edit/article/{id}', App\Action\DashboardEditArticleAction::class)
+    ->setName('dashboardeditarticle')->add(new App\Middlewares\SessionMiddleware($container));
+
+$app->post('/dashboard/update/article/{id}', App\Action\DashboardUpdateArticleAction::class)
+    ->setName('dashboardupdatearticle')->add(new App\Middlewares\SessionMiddleware($container));
+
+$app->get('/dashboard/delete/article/{id}', App\Action\DashboardDeleteArticleAction::class)
+    ->setName('dashboarddeletearticle')->add(new App\Middlewares\SessionMiddleware($container));
