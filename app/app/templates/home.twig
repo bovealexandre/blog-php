@@ -7,30 +7,26 @@
 {% block content %}
 
 
+<!-- Page Content -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 jasgrid">
-            {% for articles in articles %}
-            <div class="box-item">
-                <div class="box-post">
-                    <span class="label label-success">
-                        <a href="#" rel="tag">{{articles.pseudo}}</a>
-                    </span>
-                    <h1 class="post-title">
-                        <a href="#">
-                            {{articles.title}}
-                        </a>
-                    </h1>
-                    <span class="meta">
-                        <span><i class="fas fa-clock"></i> {{articles.publish_date}}</span>
-                    </span>
-                </div>
-                <img src="{{articles.image}}" alt="City in the sky: world's biggest hotel to open in Mecca" 
-                class="">        
+
+  <!-- Page Heading -->
+  
+
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+        {% for articles in articles %}
+        <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body text-dark">
+            <h4 class="card-title">
+                <a href="#" class="text-dark">{{articles.title}}</a>
+            </h4>
+            <p class="card-text">{{articles.text}}</p>
             </div>
-
-            {% else %}
-
+        </div>
+        </div>
+        {% else %}
             <p>Il n'y a pas encore d'articles</p>
 
             {% endfor %}
