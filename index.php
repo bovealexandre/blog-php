@@ -1,3 +1,3 @@
 <?php
 
-include("app/public/index.php");
+require("app/public/index.php");
