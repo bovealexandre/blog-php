@@ -3,7 +3,6 @@
 namespace App\Action;
 
 use Slim\Views\Twig;
-use Slim\Views\TwigExtension;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -39,11 +38,11 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($app->router->pathFor('home'));
+          return $response->withRedirect($this->router->pathFor('home'));
 
 
         }else{
-          return $response->withRedirect($app->router->pathFor('connexion'));
+          return $response->withRedirect($this->router->pathFor('connexion'));
         }
         return $response;
     }
