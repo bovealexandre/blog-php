@@ -86,7 +86,7 @@ $container[App\Action\ConnexionAction::class] = function ($c) {
 };
 
 $container[App\Action\ConnectAction::class] = function ($c) {
-    return new App\Action\ConnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\ConnectAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DisconnectAction::class] = function ($c) {
