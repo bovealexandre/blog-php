@@ -90,7 +90,7 @@ $container[App\Action\ConnectAction::class] = function ($c) {
 };
 
 $container[App\Action\DisconnectAction::class] = function ($c) {
-    return new App\Action\DisconnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DisconnectAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\RegisterPageAction::class] = function ($c) {
@@ -98,7 +98,7 @@ $container[App\Action\RegisterPageAction::class] = function ($c) {
 };
 
 $container[App\Action\RegisterAction::class] = function ($c) {
-    return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\CreateArticleAction::class] = function ($c) {
