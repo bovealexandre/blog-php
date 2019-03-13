@@ -2,6 +2,9 @@
 
 namespace App\Action;
 
+
+$router = $app->router;
+
 use Slim\Views\Twig;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
@@ -38,7 +41,7 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($app->router->pathFor('home'), 301);
+          return $response->withRedirect($this->router->pathFor('home'), 301);
 
 
         }else{
