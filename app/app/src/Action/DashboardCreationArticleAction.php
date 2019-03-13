@@ -45,6 +45,6 @@ final class DashboardCreationArticleAction
       $cat->execute();
     }
 
-    return $response->withRedirect('/~alex/app/public/dashboard/article', 301); // 301 = façon dont il redirige exemple = error 404
+    return $response->withRedirect('/~alex/app/public/dashboard/articles', 301); // 301 = façon dont il redirige exemple = error 404
   }
 }
