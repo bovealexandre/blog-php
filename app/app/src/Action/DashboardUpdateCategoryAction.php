@@ -31,6 +31,6 @@ final class DashboardUpdateCategoryAction
       $user->bindValue('nom', $nom,  \PDO::PARAM_STR);
       $user->execute();
         
-      return $response->withRedirect('/~alex/app/public//dashboard/categories', 301);
+      return $response->withRedirect('/~alex/app/public/dashboard/categories', 301);
     }
   }
