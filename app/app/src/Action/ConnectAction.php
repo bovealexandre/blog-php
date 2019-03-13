@@ -15,15 +15,15 @@ final class ConnectAction
 {
     private $view;
     private $logger;
-    private $router;
     private $db;
+    private $router;
 
     public function __construct(Twig $view, LoggerInterface $logger,$db, Router $router)
     {
         $this->view = $view;
         $this->logger = $logger;
-        $this->router = $router;
         $this->db=$db;
+        $this->router = $router;
     }
 
     public function __invoke(Request $request, Response $response, $args)
