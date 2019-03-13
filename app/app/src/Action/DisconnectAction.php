@@ -26,6 +26,6 @@ final class DisconnectAction
       unset($_SESSION['pseudo']);
       unset($_SESSION['name']);
       unset($_SESSION["permission"]);
-      return $response->withRedirect('/~{domain}/app/public/', 301);
+      return $response->withRedirect("/~{domain}/app/public/", 301);
     }
 }
