@@ -1,3 +1,3 @@
 <?php
 
-require("app/public/index.php");
+header("app/public/index.php");
