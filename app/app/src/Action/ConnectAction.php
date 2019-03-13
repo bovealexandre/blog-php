@@ -12,6 +12,7 @@ final class ConnectAction
     private $view;
     private $logger;
     private $db;
+    private $container;
 
     public function __construct(Twig $view, LoggerInterface $logger, $db, $container)
     {
