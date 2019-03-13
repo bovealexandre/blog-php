@@ -22,7 +22,6 @@ final class ConnectAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
-      $twigExtension = 
         $data = $request->getParsedBody();
         $pseudo=filter_var($data['pseudo'], FILTER_SANITIZE_STRING);
         $password= password_hash($data['password'], PASSWORD_BCRYPT,['cost' => 12]);
@@ -39,11 +38,11 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($this->get('router')->pathFor('home'));
+          return $response->withRedirect('/~alex/app/public', 301);
 
 
         }else{
-          return $response->withRedirect($this->get('router')->pathFor('connexion'));
+          return $response->withRedirect('/~alex/app/public/connexion', 301);
         }
         return $response;
     }
