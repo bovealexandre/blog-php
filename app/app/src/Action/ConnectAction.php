@@ -14,11 +14,11 @@ final class ConnectAction
     private $db;
     private $container;
 
-    public function __construct(Twig $view, LoggerInterface $logger, $db, $container)
+    public function __construct($container)
     {
-        $this->view = $view;
-        $this->logger = $logger;
-        $this->db=$db;
+        $this->view = $container->$view;
+        $this->logger = $container->$logger;
+        $this->db=$container->$db;
         $this->container = $container;
     }
 
