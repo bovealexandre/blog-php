@@ -40,7 +40,7 @@ final class ConnectAction
           $_SESSION["pseudo"]=$user["pseudo"];
           $_SESSION["permission"]= $user["permission"];
 
-          return $response->withRedirect($this->view->fetch('home.twig'), 301);
+          return $response->withRedirect($this->container->router->pathFor('home.twig'), 301);
 
 
         }else{
