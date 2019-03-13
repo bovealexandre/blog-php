@@ -39,11 +39,11 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($this->router->pathFor('home'));
+          return $response->withRedirect($this->view->TwigExtension->pathFor('home'));
 
 
         }else{
-          return $response->withRedirect($this->router->pathFor('connexion'));
+          return $response->withRedirect($this->view->TwigExtension->pathFor('connexion'));
         }
         return $response;
     }
