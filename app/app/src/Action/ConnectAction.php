@@ -38,7 +38,7 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($this->view->router->pathFor('home'), 301);
+          return $response->withRedirect($this->router->pathFor('home'), 301);
 
 
         }else{
