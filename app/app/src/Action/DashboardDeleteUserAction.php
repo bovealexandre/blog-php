@@ -29,6 +29,6 @@ final class DashboardDeleteUserAction
       $user->bindParam("id", $id);
       $user->execute();
         
-      return $response->withRedirect('/dashboard/users', 301);
+      return $response->withRedirect('/~alex/app/public/dashboard/users', 301);
     }
   }

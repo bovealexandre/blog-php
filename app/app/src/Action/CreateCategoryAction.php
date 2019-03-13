@@ -29,6 +29,6 @@ final class CreateCategoryAction
     $category->bindValue('nom', $nom, \PDO::PARAM_STR); 
     $category->execute();
 
-    return $response->withRedirect('/dashboard/categories', 301); // 301 = façon dont il redirige exemple = error 404
+    return $response->withRedirect('/~alex/app/public/dashboard/categories', 301); // 301 = façon dont il redirige exemple = error 404
   }
 }
