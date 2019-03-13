@@ -18,7 +18,7 @@ return [
         // monolog settings
         'logger' => [
             'name' => 'app',
-            // 'path' => __DIR__ . '/../log/app.log',
+            // 'path' => __DIR__ . '/log/app.log',
         ],
         'db'=>[
             'driver'    => 'pgsql',
