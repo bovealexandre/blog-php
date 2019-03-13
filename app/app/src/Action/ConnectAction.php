@@ -39,11 +39,11 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($this->view->pathFor('home'), 301);
+          return $response->withRedirect($this->view->pathFor('home'));
 
 
         }else{
-          return $response->withRedirect($this->view->pathFor('connexion'), 301);
+          return $response->withRedirect($this->view->pathFor('connexion'));
         }
         return $response;
     }
