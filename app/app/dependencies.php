@@ -15,9 +15,6 @@ $container['csrf'] = function ($c) {
     return new \Slim\Csrf\Guard;
 };
 
-$container['session'] = function ($c) {
-    return new \SlimSession\Helper;
-};
 
 
 // Database connection
