@@ -13,11 +13,12 @@ final class ConnectAction
     private $logger;
     private $db;
 
-    public function __construct(Twig $view, LoggerInterface $logger, $db)
+    public function __construct(Twig $view, LoggerInterface $logger, $db, $container)
     {
         $this->view = $view;
         $this->logger = $logger;
         $this->db=$db;
+        $this->container = $container;
     }
 
     public function __invoke(Request $request, Response $response, $args)
@@ -38,7 +39,7 @@ final class ConnectAction
           $_SESSION["permission"]= $user["permission"];
 
 
-          return $response->withRedirect($this->getContainer()->router->pathFor('home'), 301);
+          return $response->withRedirect($this->container->router->pathFor('home'), 301);
 
 
         }else{
