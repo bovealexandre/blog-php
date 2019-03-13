@@ -18,7 +18,7 @@ final class ConnectAction
     private $router;
     private $db;
 
-    public function __construct(Twig $view, LoggerInterface $logger, Router $router,$db)
+    public function __construct(Twig $view, LoggerInterface $logger,$db, Router $router)
     {
         $this->view = $view;
         $this->logger = $logger;
