@@ -16,9 +16,9 @@ final class ConnectAction
 
     public function __construct($container)
     {
-        $this->view = $container->$view;
-        $this->logger = $container->$logger;
-        $this->db=$container->$db;
+        $this->view = $container->view;
+        $this->logger = $container->logger;
+        $this->db=$container->db;
         $this->container = $container;
     }
 
