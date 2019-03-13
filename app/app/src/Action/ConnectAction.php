@@ -43,11 +43,11 @@ final class ConnectAction
           $_SESSION["pseudo"]=$user["pseudo"];
           $_SESSION["permission"]= $user["permission"];
 
-          return $response->withRedirect($this->router->pathFor('home.twig'), 301);
+          return $response->withRedirect($this->router->pathFor('home'), 301);
 
 
         }else{
-          return $response->withRedirect('/~alex/app/public/connexion', 301);
+          return $response->withRedirect($this->router->pathFor('connexion'), 301);
         }
         return $response;
     }
