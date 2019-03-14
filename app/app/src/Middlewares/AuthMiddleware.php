@@ -25,6 +25,6 @@ class AuthMiddleware {
       //return $response->withRedirect($this->container->router->pathFor('dashboard'));
     }
     $response = $next($request, $response);
-    return $response;
+    //return $response;
   }
 }
