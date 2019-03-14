@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-final class DashboardCreateArticleAction
+final class DashboardEditUserPasswordAction
 {
     private $view;
     private $logger;

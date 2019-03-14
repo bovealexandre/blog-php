@@ -176,3 +176,11 @@ $container[App\Action\DashboardUpdateArticleAction::class] = function ($c) {
 $container[App\Action\DashboardDeleteArticleAction::class] = function ($c) {
     return new App\Action\DashboardDeleteArticleAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
+
+$container[App\Action\DashboardEditUserPasswordAction::class] = function ($c) {
+    return new App\Action\DashboardEditUserPasswordAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUpdateUserPasswordAction::class] = function ($c) {
+    return new App\Action\DashboardUpdateUserPasswordAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
+};
