@@ -19,7 +19,7 @@
                         {% endfor %}
                     </select>
                     <textarea class="form-control" placeholder="text" name="text" required autofocus></textarea>
-
+                    <input type="text" class="form-control" placeholder="image" name="image" required >
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Submit</button>

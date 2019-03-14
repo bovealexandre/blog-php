@@ -30,11 +30,13 @@ final class DashboardCreationArticleAction
     $title =$data['title']; // récupérations de données, envoies dans les bindvalues
     $category=$data['category'];
     $text=$data['text'];
+    $image=$data['image'];
 
-    $article = $this->db->prepare("INSERT INTO articles(writer_id,title,text,publish_date) VALUES (:pseudo,:title,:text,NOW())  RETURNING id");
+    $article = $this->db->prepare("INSERT INTO articles(writer_id,title,text,publish_date,image) VALUES (:pseudo,:title,:text,NOW(),:image)  RETURNING id");
     $article->bindValue('pseudo', $pseudo, \PDO::PARAM_STR); 
     $article->bindValue('title', $title, \PDO::PARAM_STR); // renvoie dans les values les données que j'envoie 
     $article->bindValue('text', $text, \PDO::PARAM_STR);
+    $article->bindValue('image', $image, \PDO::PARAM_STR);
     $article->execute();
 
     $categ = $this->db->prepare("SELECT id FROM articles  ORDER BY publish_date DESC LIMIT 1");
