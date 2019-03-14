@@ -27,9 +27,11 @@ final class CreateCategoryAction
   {
     $data = $request->getParsedBody();
     $nom =$data['name'];
+    $image =$data['image'];
 
-    $category = $this->db->prepare('INSERT INTO categories(nom) VALUES (:nom)');
+    $category = $this->db->prepare('INSERT INTO categories(nom,image) VALUES (:nom,:image)');
     $category->bindValue('nom', $nom, \PDO::PARAM_STR); 
+    $category->bindValue('image', $image, \PDO::PARAM_STR); 
     $category->execute();
 
     return $response->withRedirect($this->router->pathFor('dashboardcategories'), 301); // 301 = façon dont il redirige exemple = error 404
