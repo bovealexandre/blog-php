@@ -34,6 +34,6 @@ final class DashboardCreationArticleAction
     $pass->bindValue('password', $password, \PDO::PARAM_STR); 
     $pass->execute();
 
-    return $response->withRedirect($this->router->pathFor('dashboardarticles'), 301); // 301 = façon dont il redirige exemple = error 404
+    return $response->withRedirect($this->router->pathFor('dashboarduser'), 301); // 301 = façon dont il redirige exemple = error 404
   }
 }
