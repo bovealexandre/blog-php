@@ -7,9 +7,11 @@ use Slim\Http\Response;
 class AuthMiddleware {
 
   private $container;
+  private $db;
 
-  public function __construct($container) {
+  public function __construct($container,$db) {
     $this->container = $container;
+    $this->db = $db;
   }
 
   public function __invoke(Request $request, Response $response, $next) {
