@@ -20,7 +20,7 @@ class AuthMiddleware {
     $writerid = $artid->fetch(\PDO::FETCH_ASSOC);
     if (!isset($_SESSION['permission']) || empty($_SESSION['permission'])) {
       return $response->withRedirect($this->container->router->pathFor('connexion'));
-    }elseif($_SESSION['permission']=== 1 || $_SESSION['permission']=== 2 || $_SESSION['id'] != $id || $_SESSION['id'] != $writerid  ){
+    }elseif($_SESSION['permission']=== 1 || $_SESSION['permission']=== 2 || $_SESSION['id'] = $id || $_SESSION['id'] = $writerid  ){
       return $response->withRedirect($this->container->router->pathFor('dashboard'));
     }
     $response = $next($request, $response);
