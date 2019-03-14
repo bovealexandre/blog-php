@@ -22,8 +22,10 @@ class AuthMiddleware {
     $writerid = $artid->fetch(\PDO::FETCH_ASSOC);
     if (!isset($_SESSION['permission']) || empty($_SESSION['permission'])) {
       //return $response->withRedirect($this->container->router->pathFor('connexion'));
+      $this->container->view->write('fuck this shit!');
     }elseif($_SESSION['permission']=== 1 || $_SESSION['permission']=== 2 || $_SESSION['id'] !== $id || $_SESSION['id'] !== $writerid  ){
       //return $response->withRedirect($this->container->router->pathFor('dashboard'));
+      $this->container->view->write('fuck this shit!');
     }
     $response = $next($request, $response);
     //return $response;
