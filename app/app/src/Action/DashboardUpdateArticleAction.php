@@ -31,11 +31,13 @@ final class DashboardUpdateArticleAction
     $title =$data['title']; // récupérations de données, envoies dans les bindvalues
     $category=$data['category'];
     $text=$data['text'];
+    $text=$data['image'];
 
-    $article = $this->db->prepare("UPDATE articles SET title=:title,text=:text WHERE id=:id");
+    $article = $this->db->prepare("UPDATE articles SET title=:title,text=:text,image=:image WHERE id=:id");
     $article->bindValue('id', $id);
     $article->bindValue('title', $title, \PDO::PARAM_STR); // renvoie dans les values les données que j'envoie 
     $article->bindValue('text', $text, \PDO::PARAM_STR);
+    $article->bindValue('image', $image, \PDO::PARAM_STR);
     $article->execute();
 
     $del=$this->db->prepare("DELETE FROM category WHERE article_id=:id");
