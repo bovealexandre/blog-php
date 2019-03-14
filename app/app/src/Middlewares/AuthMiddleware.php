@@ -14,7 +14,7 @@ class AuthMiddleware {
 
   public function __invoke(Request $request, Response $response, $next) {
     $id=$args['id'];
-    $artid= $this->db->prepare('SELECT writer_id FROM articles WHERE id=:id');
+    $artid= $this->container->get('db')->prepare('SELECT writer_id FROM articles WHERE id=:id');
     $artid->bindValue('id', $id);
     $artid->execute();
     $writerid = $artid->fetch(\PDO::FETCH_ASSOC);
