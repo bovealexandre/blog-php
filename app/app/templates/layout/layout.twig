@@ -11,7 +11,7 @@
 
       <nav class="navbar navbar-expand-lg">
           <div class="container">
-            <a class="navbar-brand" href="{{ path_for('home') }}">Innovation.io</a>
+            <a class="navbar-brand" href="{{ path_for('home') }}">ActuDrone</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i></span>
             </button>
@@ -23,7 +23,19 @@
                       </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ path_for('createarticle') }}">article</a>
+                  <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle text-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Categories
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      {% for categories in categories %}
+                        {% set id = categories.id %}
+                        <li><a href="{{ path_for('dashboard',{'id':id}) }}" class="text-dark pl-2" title="{{ categories.nom }}">{{ categories.nom }}</a></li>
+                      {% endfor %}
+                      
+                    </ul>
+                  </div>
                 </li>
                 {% if session.login == true %}
                   <li class="nav-item">

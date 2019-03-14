@@ -11,25 +11,60 @@
 <div class="container">
 
   <!-- Page Heading -->
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/a8oqBaKA6Rg?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   
 
   <div class="row">
-    <div class="col-lg-6 mb-4">
-        {% for articles in articles %}
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{{articles.image}}" alt=""></a>
-            <div class="card-body text-dark">
-            <h4 class="card-title">
-                <a href="#" class="text-dark">{{articles.title}}</a>
-            </h4>
-            <p class="card-text">{{articles.text}}</p>
-            </div>
-        </div>
-        </div>
-        {% else %}
-            <p>Il n'y a pas encore d'articles</p>
+    <div class="col-md-12">
 
-            {% endfor %}
+   
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#blogCarousel" data-slide-to="1"></li>
+                </ol>
+                <!-- Carousel items -->
+                
+                <div class="carousel-inner">
+                {% for articles in articles %}
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date bg-warning white">
+                                <span class="meta">
+                                    <span><i class="fas fa-clock"></i> {{articles.publish_date}}</span>
+                                </span>
+                            </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="https://cdn.pixabay.com/photo/2017/02/08/14/25/computer-2048983_960_720.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#">{{articles.title}}<tabindex="0"></a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <a class="fa fa-user-o" href="#" rel="tag">{{articles.pseudo}}</a>
+                            </div>
+                            <a class="fa fa-user-o" href="#" rel="tag">{{articles.text}}</a>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-warning white read">read more</a> </div>
+                            <!--Read More Button-->
+                        </div>
+                    </div>
+                  </div>              {% else %}
+                        <p>Il n'y a pas encore d'articles</p>
+
+                        {% endfor %}
+                      </div>
+
 
         </div>
 
