@@ -2,7 +2,11 @@
 
 namespace App\Action;
 
+
+$router = $app->router;
+
 use Slim\Views\Twig;
+use Slim\Router;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -12,12 +16,14 @@ final class ConnectAction
     private $view;
     private $logger;
     private $db;
+    private $router;
 
-    public function __construct(Twig $view, LoggerInterface $logger,$db)
+    public function __construct(Twig $view, LoggerInterface $logger,$db, Router $router)
     {
         $this->view = $view;
         $this->logger = $logger;
         $this->db=$db;
+        $this->router = $router;
     }
 
     public function __invoke(Request $request, Response $response, $args)
@@ -37,12 +43,11 @@ final class ConnectAction
           $_SESSION["pseudo"]=$user["pseudo"];
           $_SESSION["permission"]= $user["permission"];
 
-
-          return $response->withRedirect($router->pathFor('home'), 301);
+          return $response->withRedirect($this->router->pathFor('home'), 301);
 
 
         }else{
-          return $response->withRedirect('/~alex/app/public/connexion', 301);
+          return $response->withRedirect($this->router->pathFor('connexion'), 301);
         }
         return $response;
     }

@@ -80,3 +80,9 @@ $app->post('/dashboard/update/article/{id}', App\Action\DashboardUpdateArticleAc
 
 $app->get('/dashboard/delete/article/{id}', App\Action\DashboardDeleteArticleAction::class)
     ->setName('dashboarddeletearticle')->add(new App\Middlewares\SessionMiddleware($container));
+
+$app->get('/dashboard/edit/password/user/{id}', App\Action\DashboardEditUserPasswordAction::class)
+    ->setName('dashboardeditpassword')->add(new App\Middlewares\SessionMiddleware($container));
+
+$app->post('/dashboard/update/password/user/{id}', App\Action\DashboardUpdateUserPasswordAction::class)
+    ->setName('dashboardupdatepassword')->add(new App\Middlewares\SessionMiddleware($container));

@@ -8,15 +8,13 @@ $container = $app->getContainer();
 // -----------------------------------------------------------------------------
 
 
+
 // CSRF Protection
 
 $container['csrf'] = function ($c) {
     return new \Slim\Csrf\Guard;
 };
 
-$container['session'] = function ($c) {
-    return new \SlimSession\Helper;
-};
 
 
 // Database connection
@@ -35,7 +33,6 @@ $container['view'] = function ($c) {
     $settings = $c->get('settings');
     $view = new Slim\Views\Twig($settings['view']['template_path'], $settings['view']['twig']);
 
-    $router = $container['router'];
 
     // Add extensions
     $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
@@ -89,11 +86,11 @@ $container[App\Action\ConnexionAction::class] = function ($c) {
 };
 
 $container[App\Action\ConnectAction::class] = function ($c) {
-    return new App\Action\ConnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\ConnectAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DisconnectAction::class] = function ($c) {
-    return new App\Action\DisconnectAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DisconnectAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\RegisterPageAction::class] = function ($c) {
@@ -101,7 +98,7 @@ $container[App\Action\RegisterPageAction::class] = function ($c) {
 };
 
 $container[App\Action\RegisterAction::class] = function ($c) {
-    return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\RegisterAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\CreateArticleAction::class] = function ($c) {
@@ -125,11 +122,11 @@ $container[App\Action\DashboardEditUserAction::class] = function ($c) {
 };
 
 $container[App\Action\DashboardUpdateUserAction::class] = function ($c) {
-    return new App\Action\DashboardUpdateUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardUpdateUserAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardDeleteUserAction::class] = function ($c) {
-    return new App\Action\DashboardDeleteUserAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardDeleteUserAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardArticlesAction::class] = function ($c) {
@@ -149,7 +146,7 @@ $container[App\Action\DashboardCreateCategoryAction::class] = function ($c) {
 };
 
 $container[App\Action\CreateCategoryAction::class] = function ($c) {
-    return new App\Action\CreateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\CreateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardEditCategoryAction::class] = function ($c) {
@@ -157,15 +154,15 @@ $container[App\Action\DashboardEditCategoryAction::class] = function ($c) {
 };
 
 $container[App\Action\DashboardUpdateCategoryAction::class] = function ($c) {
-    return new App\Action\DashboardUpdateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardUpdateCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardDeleteCategoryAction::class] = function ($c) {
-    return new App\Action\DashboardDeleteCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardDeleteCategoryAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardCreationArticleAction::class] = function ($c) {
-    return new App\Action\DashboardCreationArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardCreationArticleAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardEditArticleAction::class] = function ($c) {
@@ -173,9 +170,17 @@ $container[App\Action\DashboardEditArticleAction::class] = function ($c) {
 };
 
 $container[App\Action\DashboardUpdateArticleAction::class] = function ($c) {
-    return new App\Action\DashboardUpdateArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardUpdateArticleAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\DashboardDeleteArticleAction::class] = function ($c) {
-    return new App\Action\DashboardDeleteArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+    return new App\Action\DashboardDeleteArticleAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
+};
+
+$container[App\Action\DashboardEditUserPasswordAction::class] = function ($c) {
+    return new App\Action\DashboardEditUserPasswordAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\DashboardUpdateUserPasswordAction::class] = function ($c) {
+    return new App\Action\DashboardUpdateUserPasswordAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
