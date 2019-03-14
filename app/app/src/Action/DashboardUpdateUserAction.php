@@ -39,6 +39,6 @@ final class DashboardUpdateUserAction
       $user->bindValue('permission', $permission,  \PDO::PARAM_INT);
       $user->execute();
         
-      return $response->withRedirect('/dashboard/users', 301);
+      return $response->withRedirect('/~alex/app/public/dashboard/users', 301);
     }
   }

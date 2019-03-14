@@ -29,6 +29,6 @@ final class DashboardDeleteCategoryAction
       $user->bindParam("id", $id);
       $user->execute();
         
-      return $response->withRedirect('/dashboard/categories', 301);
+      return $response->withRedirect('/~alex/app/public/dashboard/categories', 301);
     }
   }

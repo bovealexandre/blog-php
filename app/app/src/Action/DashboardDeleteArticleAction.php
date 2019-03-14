@@ -32,6 +32,6 @@ final class DashboardDeleteArticleAction
     $del->bindValue('id',$id);
     $del->execute();
 
-    return $response->withRedirect('/', 301); // 301 = façon dont il redirige exemple = error 404
+    return $response->withRedirect('/~alex/app/public/dashboard/articles', 301); // 301 = façon dont il redirige exemple = error 404
   }
 }

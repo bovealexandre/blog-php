@@ -20,8 +20,7 @@ CREATE TABLE articles(
     writer_id INT NOT NULL REFERENCES users(ID),
     text TEXT NOT NULL,
     title VARCHAR NOT NULL,
-    publish_date TIMESTAMP NOT NULL,
-    image BYTEA NOT NULL
+    publish_date TIMESTAMP NOT NULL
 );
 
 CREATE TABLE comments(
