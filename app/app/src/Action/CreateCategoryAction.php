@@ -20,6 +20,7 @@ final class CreateCategoryAction
       $this->view = $view;
       $this->logger = $logger;
       $this->db=$db;
+      $this->router = $router;
   }
 
   public function __invoke(Request $request, Response $response, $args)
