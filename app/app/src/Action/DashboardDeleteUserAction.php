@@ -3,6 +3,7 @@
 namespace App\Action;
 
 use Slim\Views\Twig;
+use Slim\Router;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -12,12 +13,14 @@ final class DashboardDeleteUserAction
     private $view;
     private $logger;
     private $db;
+    private $router;
 
-    public function __construct(Twig $view, LoggerInterface $logger, $db)
+    public function __construct(Twig $view, LoggerInterface $logger, $db, Router $router)
     {
         $this->view = $view;
         $this->logger = $logger;
         $this->db = $db;
+        $this->router = $router;
     }
 
     public function __invoke(Request $request, Response $response, $args)
@@ -29,6 +32,6 @@ final class DashboardDeleteUserAction
       $user->bindParam("id", $id);
       $user->execute();
         
-      return $response->withRedirect('/~alex/app/public/dashboard/users', 301);
+      return $response->withRedirect($this->router->pathFor('dashboarduser'), 301);
     }
   }
