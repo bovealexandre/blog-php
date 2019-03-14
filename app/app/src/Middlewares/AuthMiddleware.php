@@ -13,7 +13,7 @@ class AuthMiddleware {
   }
 
   public function __invoke(Request $request, Response $response, $next) {
-    $id=$args['id'];
+    $id=$next['id'];
     var_dump($id);
     $artid= $this->container->get('db')->prepare('SELECT writer_id FROM articles WHERE id=:id');
     $artid->bindValue('id', $id);
