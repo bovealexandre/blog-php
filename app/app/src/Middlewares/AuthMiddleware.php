@@ -8,13 +8,14 @@ class AuthMiddleware {
 
   private $container;
 
-  public function __construct($container) {
+  public function __construct($container, $id) {
     $this->container = $container;
+    $this->id=$id;
   }
 
   public function __invoke(Request $request, Response $response, $next) {
     $id=$request->getAttribute('id');
-    var_dump($request->getURI()->path);
+    var_dump($this->id);
     $artid= $this->container->get('db')->prepare('SELECT writer_id FROM articles WHERE id=:id');
     $artid->bindValue('id', $id);
     $artid->execute();

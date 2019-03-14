@@ -37,7 +37,7 @@ $app->get('/dashboard/users', App\Action\DashboardUserAction::class)
     ->setName('dashboarduser')->add(new App\Middlewares\SessionMiddleware($container));
 
 $app->get('/dashboard/edit/user/{id}', App\Action\DashboardEditUserAction::class)
-    ->setName('dashboardedituser')->add(new App\Middlewares\AuthMiddleware($container));
+    ->setName('dashboardedituser')->add(new App\Middlewares\AuthMiddleware($container, $id));
 
 $app->post('/dashboard/update/user/{id}', App\Action\DashboardUpdateUserAction::class)
     ->setName('dashboardupdateuser')->add(new App\Middlewares\AuthMiddleware($container));
