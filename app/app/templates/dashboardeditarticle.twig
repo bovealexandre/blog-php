@@ -19,7 +19,7 @@
                         {% endfor %}
                     </select>
                     <textarea class="form-control" placeholder="text" name="text" required autofocus>{{article['text']}}</textarea>
-
+                    <input type="text" class="form-control" value="{{article['image']}}" name="image" required autofocus>
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Update</button>

@@ -13,6 +13,7 @@
             <div class="account-wall">
               <form class="form-signin" action="{{ path_for('dashboardupdatecategory', {'id':id}) }}" method="post">
                     <input type="text" class="form-control" value="{{nom}}" name="name" required autofocus>
+                    <input type="text" class="form-control" value="{{image}}" name="image" required autofocus>
 
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">

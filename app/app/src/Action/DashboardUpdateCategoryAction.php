@@ -27,11 +27,13 @@ final class DashboardUpdateCategoryAction
     {     
       $this->logger->info("Dashboard categories page action dispatched");
       $id = $args['id'];
-      $nom = $request->getParsedBody()['name']; //checks _POST [IS PSR-7 compliant]
+      $nom = $request->getParsedBody()['name'];
+      $nom = $request->getParsedBody()['image']; //checks _POST [IS PSR-7 compliant]
 
-      $user = $this->db->prepare('UPDATE categories SET nom=:nom WHERE id=:id');
+      $user = $this->db->prepare('UPDATE categories SET nom=:nom image=:image WHERE id=:id');
       $user->bindParam("id", $id);
       $user->bindValue('nom', $nom,  \PDO::PARAM_STR);
+      $user->bindValue('image', $image,  \PDO::PARAM_STR);
       $user->execute();
         
       return $response->withRedirect($this->router->pathFor('dashboardcategories'), 301);
