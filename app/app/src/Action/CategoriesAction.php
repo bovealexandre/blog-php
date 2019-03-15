@@ -30,8 +30,8 @@ final class CategoriesAction
         $cat->fetchAll();
 
 
-            $articles = $this->db->prepare('SELECT articles.*, users.pseudo FROM article LEFT JOIN users ON articles.writer_id = users.ID WHERE articles.id= :articleid');
-            $articles->bindValue('id',$cat['article_id']);
+            $articles = $this->db->prepare('SELECT articles.*, users.pseudo, category.* FROM article, category LEFT JOIN users ON articles.writer_id = users.ID WHERE category.categories= :id');
+            $articles->bindValue('id',$args['id']);
             $articles->execute();
             $articles->fetchAll();
        
