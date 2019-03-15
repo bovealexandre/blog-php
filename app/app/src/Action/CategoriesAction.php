@@ -29,13 +29,11 @@ final class CategoriesAction
         $cat->execute();
         $cat->fetchAll();
 
-        foreach($cat as $cat){
-            $i ++;
-            $articles[$i] = $this->db->prepare('SELECT articles.*, users.pseudo FROM article LEFT JOIN users ON articles.writer_id = users.ID WHERE articles.id= :articleid');
-            $articles[$i]->bindValue('id',$cat['article_id']);
-            $articles[$i]->execute();
-            $articles[$i]->fetch(PDO::FETCH_ASSOC);
-        }
+
+            $articles = $this->db->prepare('SELECT articles.*, users.pseudo FROM article LEFT JOIN users ON articles.writer_id = users.ID WHERE articles.id= :articleid');
+            $articles->bindValue('id',$cat['article_id']);
+            $articles->execute();
+            $articles->fetchAll();
        
         $args['articles']=$articles;
         var_dump($args['articles']);
