@@ -34,7 +34,6 @@ final class DashboardEditArticleAction
     $categ->execute();
     $args['selectcat']= $categ->fetch(\PDO::FETCH_ASSOC);
 
-    var_dump($args['article']);
 
    $categories= $this->db->prepare('SELECT * FROM categories');
    $categories->execute();
