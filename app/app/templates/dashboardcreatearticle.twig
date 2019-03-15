@@ -17,7 +17,7 @@
                             <option value="{{categories.id}}">{{categories.nom}}</option> 
                         {% endfor %}
                     </select>
-                    <textarea id="editor" name="text"required class="w-100"></textarea>
+                    <textarea id="editor" name="text" required></textarea>
                     <input type="text" class="form-control" placeholder="image" name="image" required >
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
