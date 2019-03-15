@@ -7,9 +7,9 @@
 {% block content %}
 <div class="col-md-10 blogShort">
                      <h1>{{article['title']}}</h1>
-                     <aside><img src="{{article['image']}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10"></aside>
+                     <aside><img src="{{article['image']}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 ofc"></aside>
                      <article>
-                     {{article['text']}}
+                     {{article['text'] | raw}}
                          
                      
                      
