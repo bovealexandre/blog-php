@@ -30,7 +30,8 @@
 <script>
 ClassicEditor
     .create( document.querySelector( '#editor' ) ), {
-        removePlugins:[ 'image']
+        removePlugins:[ 'image'],
+        toolbar: [ 'Heading', 'bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote', 'Link' ]
     }
     .then( editor => {
         console.log( editor );
