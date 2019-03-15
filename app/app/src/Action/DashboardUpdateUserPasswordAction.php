@@ -27,7 +27,8 @@ final class DashboardUpdateUserPasswordAction
   {
     $id=$args['id'];
     $data = $request->getParsedBody();
-    $password =$data['password']; // récupérations de données, envoies dans les bindvalues
+    $sentpassword=$data['password'];
+    $password=password_hash($sentpassword, PASSWORD_BCRYPT,['cost' => 12]); // récupérations de données, envoies dans les bindvalues
 
     $pass = $this->db->prepare('UPDATE users SET password=:password WHERE id=:id');
     $pass->bindValue('id', $id, \PDO::PARAM_STR); 
