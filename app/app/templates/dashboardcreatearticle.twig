@@ -18,7 +18,7 @@
                             <option value="{{categories.id}}">{{categories.nom}}</option> 
                         {% endfor %}
                     </select>
-                    <textarea class="form-control" placeholder="text" name="text" required autofocus></textarea>
+                    <textarea class="form-control" placeholder="text" id="text" name="text" required autofocus></textarea>
                     <input type="text" class="form-control" placeholder="image" name="image" required >
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -29,4 +29,9 @@
     </div>
 </div>
 
+        <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'text' );
+            </script>
 {% endblock %}
