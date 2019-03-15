@@ -7,8 +7,8 @@
 {% block content %}
 <div class="col-md-10">
                      <h1>{{article['title']}}</h1>
-                     <aside class="w-25"><img src="{{article['image']}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 ofc"></aside>
                      <article>
+                     <img src="{{article['image']}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 ofc">
                      {{article['text'] | raw}}
                          
                      
