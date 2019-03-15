@@ -14,7 +14,6 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Title</th>
-              <th scope="col">Description</th>
               <th scope="col">Writer</th>
               <th scope="col">Publish date</th>
               <th scope="col">Edit</th>
@@ -30,7 +29,6 @@
               <tr> 
                 <th scope="row">{{articleNum}}</th>
                 <td>{{articles.title}}</td>
-                <td>{{articles.text}}</td>
                 <td>{{articles.pseudo}}</td>
                 <td>{{articles.publish_date}}</td>
                 <td><a href="{{path_for('dashboardeditarticle',{'id':articles.id})}}"><i class="fas fa-edit"></i></a></td>
