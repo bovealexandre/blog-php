@@ -18,7 +18,7 @@
                             <option value="{{categories.id}}">{{categories.nom}}</option> 
                         {% endfor %}
                     </select>
-                    <textarea class="form-control" placeholder="text" name="text" required autofocus>{{article['text']}}</textarea>
+                    <textarea id="editor" placeholder="text" name="text" required autofocus>{{article['text']}}</textarea>
                     <input type="text" class="form-control" value="{{article['image']}}" name="image" required autofocus>
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -29,4 +29,19 @@
     </div>
 </div>
 
+
+<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+<script>
+ClassicEditor
+    .create( document.querySelector( '#editor' ) ), {
+        removePlugins:[ 'image'],
+        toolbar: [ 'Heading', 'bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote', 'Link' ]
+    }
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
 {% endblock %}
