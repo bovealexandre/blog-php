@@ -12,11 +12,11 @@
   {% for articles in articles %}
       {% set id = articles.id %}
         <figure class="effect-oscar">
-	        <img src="{{articles.image}}" alt="img09"/>
+	        <img src="{{articles.image}}" alt="img09" style="width: 100%; object-fit: cover;"/>
 		<figcaption>
 			<h2>{{articles.title}}</h2>
 			<p>{{articles.pseudo}}</p>
-			<a href="#">View more</a>
+			<a href="#"></a>
 		</figcaption>			
 	</figure>
   
