@@ -18,7 +18,7 @@
                             <option value="{{categories.id}}">{{categories.nom}}</option> 
                         {% endfor %}
                     </select>
-                    <textarea class="form-control" placeholder="text" id="text" name="text"  rows="10" cols="80" required></textarea>
+                    <textarea class="form-control" placeholder="text" id="summernote" name="text"  rows="10" cols="80" required></textarea>
                     <input type="text" class="form-control" placeholder="image" name="image" required >
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -29,14 +29,8 @@
     </div>
 </div>
 
-        <script>
-                        ClassicEditor
-                                .create( document.querySelector( '#text' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-        </script>
+$(document).ready(function() {
+  $('#summernote').summernote();
+});
+
 {% endblock %}
