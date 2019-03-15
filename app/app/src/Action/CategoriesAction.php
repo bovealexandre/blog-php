@@ -30,7 +30,7 @@ final class CategoriesAction
         $categories->fetchAll();
 
 
-            $articles = $this->db->prepare('SELECT  category.*, articles.*, users.pseudo FROM category INNER JOIN users, articles ON category.article_id=articles.id, articles.writer_id = users.ID WHERE category.categories= :id');
+            $articles = $this->db->prepare('SELECT  category.*, articles.*, users.pseudo FROM category INNER JOIN articles ON category.article_id=articles.id INNER JOIN users ON articles.writer_id = users.ID WHERE category.categories= :id');
             $articles->bindValue('id',$args['id']);
             $articles->execute();
             $articles->fetchAll();
