@@ -9,7 +9,7 @@ $app->get('/', App\Action\HomeAction::class)
  $app->get('/category/{id}', App\Action\CategoriesAction::class)
     ->setName('category');
 
-$app->get('/article', App\Action\ArticleAction::class)
+$app->get('/article/{id}', App\Action\ArticleAction::class)
     ->setName('article');
 
 $app->get('/connexion', App\Action\ConnexionAction::class)
