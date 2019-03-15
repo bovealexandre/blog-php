@@ -25,7 +25,7 @@ $('#summernote').summernote({
                             <option value="{{categories.id}}">{{categories.nom}}</option> 
                         {% endfor %}
                     </select>
-                    <textarea id="summernote" name="text"required></textarea>
+                    <textarea id="article" name="text"required></textarea>
                     <input type="text" class="form-control" placeholder="image" name="image" required >
                     {{ csrf_fields() | raw }}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -36,7 +36,7 @@ $('#summernote').summernote({
     </div>
 </div>
 <script>
-    $('#summernote').summernote({
+    $('#article').summernote({
         placeholder: 'Hello bootstrap 4',
         tabsize: 2,
         height: 100
