@@ -3,9 +3,11 @@
 {% block title %}
         <title>Slim 3</title>
         <script>
-$(document).ready(function() {
-  $('#summernote').summernote();
-});
+$('#summernote').summernote({
+        placeholder: 'Hello bootstrap 4',
+        tabsize: 2,
+        height: 100
+      });
 </script>
 {% endblock %}
 
