@@ -280,7 +280,7 @@ figure.effect-oscar:hover img {
   opacity: 0.4; }
 
 .ofc {
-  height: 40vh;
+  height: 40vh !important;
   object-fit: cover; }
 
 .blogShort {
