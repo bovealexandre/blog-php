@@ -22,7 +22,7 @@ final class HomeAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $articles = $this->db->prepare('SELECT * FROM articles LEFT JOIN users ON articles.writer_id = users.ID LIMIT 5');
+        $articles = $this->db->prepare('SELECT * FROM category LEFT JOIN users ON articles.writer_id = users.ID LIMIT 5');
         $articles->execute();
 
         $categories= $this->db->prepare('SELECT * FROM categories');
