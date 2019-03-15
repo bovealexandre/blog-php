@@ -24,10 +24,8 @@ final class CategoriesAction
     {
         $id=$args["id"];
 
-        $categories= $this ->db->prepare('SELECT * FROM category WHERE categories=:id');
-        $categories->bindValue('id',$id);
+        $categories= $this->db->prepare('SELECT * FROM categories');
         $categories->execute();
-        $categories->fetchAll();
 
 
             $articles = $this->db->prepare('SELECT  category.*, articles.*, users.pseudo FROM category INNER JOIN articles ON category.article_id=articles.id INNER JOIN users ON articles.writer_id = users.ID WHERE category.categories= :id');
@@ -35,6 +33,7 @@ final class CategoriesAction
             $articles->execute();
             $articles->fetchAll();
        
+            $args['categories']=$categories;
         $args['articles']=$articles;
         $this->logger->info("Home page action dispatched");
         
