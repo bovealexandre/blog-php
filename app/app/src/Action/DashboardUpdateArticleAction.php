@@ -31,7 +31,7 @@ final class DashboardUpdateArticleAction
     $title =$data['title']; // récupérations de données, envoies dans les bindvalues
     $category=$data['category'];
     $text=$data['text'];
-    $text=$data['image'];
+    $image=$data['image'];
 
     $article = $this->db->prepare("UPDATE articles SET title=:title,text=:text,image=:image WHERE id=:id");
     $article->bindValue('id', $id);

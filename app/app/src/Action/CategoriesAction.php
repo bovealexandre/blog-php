@@ -7,7 +7,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-final class HomeAction
+final class CategoriesAction
 {
     private $view;
     private $logger;
@@ -22,16 +22,25 @@ final class HomeAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $articles = $this->db->prepare('SELECT * FROM articles LEFT JOIN users ON articles.writer_id = users.ID LIMIT 5');
-        $articles->execute();
+        $id=$args["id"];
 
-        $categories= $this->db->prepare('SELECT * FROM categories');
-        $categories->execute();
+        $cat= $this ->db->prepare('SELECT * FROM category WHERE categories=:id');
+        $cat->bindValue('id',$id);
+        $cat->execute();
+        $cat->fetchAll();
 
-        $args['categories']=$categories;
+        foreach($cat as $cat){
+            $i ++;
+            $articles[$i] = $this->db->prepare('SELECT articles.*, users.pseudo FROM article LEFT JOIN users ON articles.writer_id = users.ID WHERE articles.id= :articleid');
+            $articles[$i]->bindValue('id',$cat['article_id']);
+            $articles[$i]->execute();
+            $articles[$i]->fetch(PDO::FETCH_ASSOC);
+        }
+       
         $args['articles']=$articles;
+        var_dump($args['articles']);
         $this->logger->info("Home page action dispatched");
         
-        $this->view->render($response, 'home.twig',$args);
+        $this->view->render($response, 'categories.twig',$args);
     }
 }

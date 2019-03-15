@@ -77,6 +77,10 @@ $container[App\Action\HomeAction::class] = function ($c) {
     return new App\Action\HomeAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
 
+$container[App\Action\CategoriesAction::class] = function ($c) {
+    return new App\Action\CategoriesAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
 $container[App\Action\ArticleAction::class] = function ($c) {
     return new App\Action\ArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };

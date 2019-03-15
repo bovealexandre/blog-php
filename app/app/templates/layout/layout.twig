@@ -31,7 +31,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       {% for categories in categories %}
                         {% set id = categories.id %}
-                        <li><a href="{{ path_for('dashboard',{'id':id}) }}" class="text-dark pl-2" title="{{ categories.nom }}">{{ categories.nom }}</a></li>
+                        <li><a href="{{ path_for('category',{'id':id}) }}" class="text-dark pl-2" title="{{ categories.nom }}">{{ categories.nom }}</a></li>
                       {% endfor %}
                       
                     </ul>
