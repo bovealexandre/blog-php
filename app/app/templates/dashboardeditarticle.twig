@@ -9,7 +9,7 @@
     <h1 class="mt-4 mb-4">Update article</h1>
 
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 m-auto">
+        <div class="container m-auto">
             <div class="account-wall">
                 <form class="form-signin" action="{{ path_for('dashboardupdatearticle',{'id':id}) }}" method="post">
                     <input type="text" class="form-control" value="{{article['title']}}" name="title" required autofocus>
@@ -24,6 +24,36 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Update</button>
                 </form>
+
+
+                <h1 class="mt-4 mb-4">Comments </h1>
+                <div class="table-responsive mt-3 mb-3">
+                    <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" class="w-100">Title</th>
+                        <th scope="col">Writer</th>
+                        <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comments in comments %}
+                        {% set commentnum = commentnum + 1 %}
+                        <tr> 
+                            <th scope="row">{{commentnum}}</th>
+                            <td class="w-100">{{comments.text}}</td>
+                            <td>{{comments.pseudo}}</td>
+                            <td><a href="{{ path_for('deletecomment', { 'articleid':id, 'id':comments.id}) }}"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <th colspan="8" class="text-center">There are no comments at the moment</th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -5,11 +5,49 @@
 {% endblock %}
 
 {% block content %}
-<div class="col-md-10">
-                     <h1>{{article['title']}}</h1>
-                     <article>
-                     <img src="{{article['image']}}" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10 ofc">
-                     <div>{{article['text'] | raw}}</div>
+<div class="container m-auto">
+        <article>
+                <aside class="float-left"><img src="{{article['image']}}" alt="post img" class="img-responsive postImg img-thumbnail margin10 ofc"></aside>
+                <h1>{{article['title']}}</h1>
+                <h2><a href="{{path_for('author', { 'id':article['writer_id']})}}"> {{article['pseudo']}}</a></h2>
+                <div>{{article['text'] | raw}}</div>
+
+                <div class="row">
+                        <div class="container">
+                                <div class="page-header">
+                                        <h1>Comments </h1>
+                                        
+                                        {% if session.permission == 3 or session.permission == 2 or  session.permission == 1 %}
+                                        <form action ="{{ path_for('newcomment') }}" method="post">
+                                                <input type="hidden" name="articleid" value={{article['id']}}></input>
+                                                <textarea name="comment" class="form-control" placeholder="Type your comment"></textarea>
+                                                <button type="submit" name ="submit" value="submit" class="btn btn-primary">submit</button>
+                                                {{ csrf_fields() | raw }}
+                                        </form>
+                                        {% endif %}
+
+                                        <div class="comments-list">
+                                        {% for comments in comments %}
+                                        {% set CommentsNum = CommentsNum + 1 %}
+                                        <div class="media">
+                                                
+
+                                                <div class="media-body">
+                                                        
+                                                        <h4 class="media-heading user_name">{{comments.pseudo}}</h4>
+                                                        {{comments.text}}
+                                                        
+                                                </div>
+                                                <p class="float-right"><small>{{comments.publish_date}}</small></p>
+                                                </div>
+                                        {% else %}
+                                                <p>Il n'y a pas encore de commentaires</p>
+                                        {% endfor %}
+                                        </div>
+                                </div> 
+                                <div class="comments-list">
+                        </div>
+                </div>
                          
                      
                      

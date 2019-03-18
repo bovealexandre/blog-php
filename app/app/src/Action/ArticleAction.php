@@ -28,6 +28,16 @@ final class ArticleAction
         $articles->execute();
         $args['article']=$articles->fetch(\PDO::FETCH_ASSOC);
         $this->logger->info("Article page action dispatched");
+
+        $categories= $this->db->prepare('SELECT * FROM categories');
+        $categories->execute();
+
+        $comments= $this->db->prepare('SELECT comments.*, users.pseudo, users.id FROM comments INNER JOIN users ON comments.writer_id = users.id WHERE article_id=:id');
+        $comments->bindValue('id',$id);
+        $comments->execute();
+
+        $args['categories']=$categories;
+        $args['comments']=$comments;
         
         $this->view->render($response, 'article.twig',$args);
         return $response;

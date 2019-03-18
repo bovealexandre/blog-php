@@ -39,6 +39,11 @@ final class DashboardEditArticleAction
    $categories->execute();
    $args['categories']= $categories;
 
+   $comments = $this->db->prepare("SELECT comments.* , users.pseudo FROM comments INNER JOIN users ON comments.writer_id = users.id WHERE article_id=:id");
+    $comments->bindParam("id",$id);
+    $comments->execute();
+    $args['comments']= $comments;
+
     $this->view->render($response, 'dashboardeditarticle.twig',$args);
   }
 }

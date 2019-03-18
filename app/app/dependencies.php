@@ -28,11 +28,12 @@ $container['db']= function($c) {
     return $pdo;
 };
 
+
+
 // Twig
 $container['view'] = function ($c) {
     $settings = $c->get('settings');
     $view = new Slim\Views\Twig($settings['view']['template_path'], $settings['view']['twig']);
-
 
     // Add extensions
     $view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
@@ -81,8 +82,20 @@ $container[App\Action\CategoriesAction::class] = function ($c) {
     return new App\Action\CategoriesAction($c->get('view'), $c->get('logger'),$c->get('db'));
 };
 
+$container[App\Action\AuthorAction::class] = function ($c) {
+    return new App\Action\AuthorAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
 $container[App\Action\ArticleAction::class] = function ($c) {
     return new App\Action\ArticleAction($c->get('view'), $c->get('logger'),$c->get('db'));
+};
+
+$container[App\Action\NewCommentAction::class] = function ($c) {
+    return new App\Action\NewCommentAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
+};
+
+$container[App\Action\DeleteCommentAction::class] = function ($c) {
+    return new App\Action\DeleteCommentAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
 };
 
 $container[App\Action\ConnexionAction::class] = function ($c) {

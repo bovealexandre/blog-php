@@ -23,9 +23,17 @@ final class DashboardUserAction
     public function __invoke(Request $request, Response $response, $args)
     {
       $this->logger->info("Dashboard user page action dispatched");
+      if ($_SESSION['permission'] !== 2){
+        $users = $this->db->prepare('SELECT * FROM users');
+        $users->execute();
+  
+        }else{
 
-      $users = $this->db->prepare('SELECT * FROM users');
-      $users->execute();
+          $users = $this->db->prepare('SELECT * FROM users WHERE id =:id');
+          $users->bindValue('id',$_SESSION['id']);
+          $users->execute();
+        }
+
       $args['users']=$users;
         
       $this->view->render($response, 'dashboarduser.twig',$args);

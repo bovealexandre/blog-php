@@ -6,11 +6,20 @@
 $app->get('/', App\Action\HomeAction::class)
     ->setName('home');
 
- $app->get('/category/{id}', App\Action\CategoriesAction::class)
+$app->get('/category/{id}', App\Action\CategoriesAction::class)
     ->setName('category');
+
+$app->get('/author/{id}', App\Action\AuthorAction::class)
+    ->setName('author');
 
 $app->get('/article/{id}', App\Action\ArticleAction::class)
     ->setName('article');
+
+$app->post('/article/new/comment', App\Action\NewCommentAction::class)
+    ->setName('newcomment');
+
+$app->get('/article/delete/comment/{articleid}/{id}', App\Action\DeleteCommentAction::class)
+    ->setName('deletecomment');
 
 $app->get('/connexion', App\Action\ConnexionAction::class)
     ->setName('connexion');

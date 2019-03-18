@@ -8,67 +8,30 @@
 
 
 <!-- Page Content -->
-<div class="container">
+
 
   <!-- Page Heading -->
-  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/a8oqBaKA6Rg?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/a8oqBaKA6Rg?autoplay=1&controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="container">
 
-  <div class="row">
-    <div class="col-md-12">
+  <div class="accordian">
+    <ul>
+    {% for articles in articles %}
+		<li>
+			<div class="image_title">
+				<a href="{{path_for('article',{'id':articles.id})}}">{{ articles.title}}</a>
+				<a href="{{path_for('author', { 'id':articles.writer_id})}}">{{ articles.pseudo}}</a>
+			</div> 
+			<a href="{{path_for('article',{'id':articles.id})}}">
+				<img class ="w-100 ofc" src="{{ articles.image}}"/>
+			</a>
+		</li>
+    {% else %}
+      <p>Il n'y a pas encore d'articles</p>
+    {% endfor %}
+    </ul>
+  </div>
 
-   
-              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#blogCarousel" data-slide-to="1"></li>
-                </ol>
-                <!-- Carousel items -->
-                
-                <div class="carousel-inner">
-                {% for articles in articles %}
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-warning white">
-                                <span class="meta">
-                                    <span><i class="fas fa-clock"></i> {{articles.publish_date}}</span>
-                                </span>
-                            </div>
-                            <!--Image-->
-                            <figure> <img alt="" class="ofc" src="{{ articles.image}}"> </figure>
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#">{{articles.title}}<tabindex="0"></a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <a class="fa fa-user-o" href="#" rel="tag">{{articles.pseudo}}</a>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                              
-                            </div>
-                            <div class="mt"> <a href="{{path_for('article',{'id':articles.id})}}" tabindex="0" class="btn bg-warning white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                  </div>              {% else %}
-                        <p>Il n'y a pas encore d'articles</p>
-
-                        {% endfor %}
-                      </div>
-
-
-        </div>
-
-        
-    </div>
 
 </div> <!-- /container -->
 {% endblock %}

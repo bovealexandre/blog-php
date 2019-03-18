@@ -8,6 +8,7 @@
 
 <div class="container">
 
+	<div class="content">
   <div class="grid">
   {% for articles in articles %}
       {% set id = articles.id %}
@@ -16,11 +17,12 @@
 		<figcaption>
 			<h2>{{articles.title}}</h2>
 			<p>{{articles.pseudo}}</p>
-			<a href="#"></a>
+			<a href="{{path_for('article',{'id':articles.id})}}"></a>
 		</figcaption>			
 	</figure>
   
   {% endfor %}
+  </div>
   </div>
   </div>
 
