@@ -83,6 +83,7 @@ with  **your action**.php
 namespace App\Action;
 
 use Slim\Views\Twig;
+use Slim\Router;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -93,12 +94,14 @@ final class YourAction
   private $view;
   private $logger;
   private $db;
+  private $router;
 
-  public function __construct(Twig $view, LoggerInterface $logger,$db)
+  public function __construct(Twig $view, LoggerInterface $logger,$db, Router $router)
   {
       $this->view = $view;
       $this->logger = $logger;
       $this->db=$db;
+      $this->router=$router;
   }
 
   public function __invoke(Request $request, Response $response, $args)
@@ -106,11 +109,28 @@ final class YourAction
     $id=$this->db->prepare('YourSqlRequest');
     $id->execute();
 
-    return $response->withRedirect('/', 301, $args);
+    return $response->withRedirect($this->router->pathFor('dashboardarticles',$args), 301);
 
 
   }
- }
+}
+
+```
+
+In your routes.php
+
+```
+$app->get('YourLink', App\Action\YourAction::class)
+    ->setName('yourpath');
+
+```
+
+In your dependencies.php
+
+```
+$container[App\Action\yourAction::class] = function ($c) {
+    return new App\Action\YourAction($c->get('view'), $c->get('logger'),$c->get('db'),$c->get('router'));
+};
 
 ```
 
